@@ -9,19 +9,20 @@ export default function List(props: {
   align?: 'start' | 'center' | 'end' | 'stretch';
   justify?: 'start' | 'center' | 'end' | 'between' | 'evenly' | 'around';
   width?: 'max' | 'full' | number;
+  className?: string;
   children: ReactNode;
 }) {
-  const { align = 'stretch', justify = 'between', width = 'full' } = props;
+  const { align = 'stretch', justify = 'between', width = 'full', className = '' } = props;
   const directionClassName = props.direction === 'horizontal' ? 'flex-row' : 'flex-column';
   const paddingXClassName = `px-${props.paddingX}`;
   const paddingYClassName = `py-${props.paddingY}`;
   const gapClassName = `gap-${props.gap}`;
-  const alignClassName = `items-${props.align}`;
-  const justifyClassName = `justify-${props.justify}`;
-  const widthClassName = `w-${props.width}`;
+  const alignClassName = `items-${align}`;
+  const justifyClassName = `justify-${justify}`;
+  const widthClassName = `w-${width}`;
   return (
     <div
-      className={`flex ${directionClassName} ${paddingXClassName} ${paddingYClassName} ${gapClassName} ${alignClassName} ${justifyClassName} ${widthClassName}`}
+      className={`flex ${directionClassName} ${paddingXClassName} ${paddingYClassName} ${gapClassName} ${alignClassName} ${justifyClassName} ${widthClassName} ${className}`}
     >
       {props.children}
     </div>

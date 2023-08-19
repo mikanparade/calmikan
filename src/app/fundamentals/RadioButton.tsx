@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export default function RadioButton(props: {
   buttonKey: (string | number | boolean)[];
-  onChange?: (buttonKey: (string | number | boolean)[]) => void;
+  onChange?: (buttonKey: (string | number | boolean)[], name: string, value: string) => void;
   name: string;
   value: string;
   checked: boolean;
@@ -14,7 +14,7 @@ export default function RadioButton(props: {
     if (!onChange) {
       return;
     }
-    onChange(buttonKey);
+    onChange(buttonKey, props.name, props.value);
   };
 
   return (
