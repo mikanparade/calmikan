@@ -97,14 +97,14 @@ const AddEvent: React.FC = () => {
     return keywords.filter((keyword) => input.includes(keyword));
   };
 
-  const getDateFromFourDigitNumber = (number: number): Date => {
+  const getDateFromFourDigitNumber = (number: number, date: Date): Date => {
     const month = Math.floor(number / 100);
     const d = number % 100;
-    return new Date(date.getFullYear(), month - 1, d);
+    return new Date(date.getFullYear(), month - 1, d, date.getHours(), date.getMinutes());
   };
 
-  const getDateStringFromFourDigitNumber = (number: number): string => {
-    const d = getDateFromFourDigitNumber(number);
+  const getDateStringFromFourDigitNumber = (number: number, date: Date): string => {
+    const d = getDateFromFourDigitNumber(number, date);
     return `${(d.getMonth() + 1).toString().padStart(2, '0')}月${d
       .getDate()
       .toString()
@@ -139,7 +139,7 @@ const AddEvent: React.FC = () => {
 
   const validateEndTime = (start: Date, end: Date): Date => {
     if (end.getTime() > start.getTime()) return end;
-    else return new Date(date.getTime() + defaultEndTimeDuration);
+    else return new Date(start.getTime() + defaultEndTimeDuration);
   };
 
   return (
@@ -196,13 +196,14 @@ const AddEvent: React.FC = () => {
                   onClick={() => {
                     const newTitle = removeSpecifiedFourDigitNumber(title, includeNumsInTitle[0]);
                     setTitle(newTitle);
+                    const d = getDateFromFourDigitNumber(includeNumsInTitle[0], date);
+                    setDate(d);
+                    setStartTime(d);
+                    setEndTime(validateEndTime(d, endTime));
                     setIncludeNumsInTitle(extractFourDigitNumbers(newTitle));
-                    setDate(getDateFromFourDigitNumber(includeNumsInTitle[0]));
-                    setStartTime(getDateFromFourDigitNumber(includeNumsInTitle[0]));
-                    setEndTime(validateEndTime(startTime, endTime));
                   }}
                 >
-                  {`${getDateStringFromFourDigitNumber(includeNumsInTitle[0])}開始`}
+                  {`${getDateStringFromFourDigitNumber(includeNumsInTitle[0], date)}開始`}
                 </button>
               )}
             </div>
@@ -247,10 +248,11 @@ const AddEvent: React.FC = () => {
                   onClick={() => {
                     const newTitle = removeSpecifiedFourDigitNumber(title, includeNumsInTitle[0]);
                     setTitle(newTitle);
+                    const d = getTimeFromFourDigitNumber(includeNumsInTitle[0], date);
+                    setDate(d);
+                    setStartTime(d);
+                    setEndTime(validateEndTime(d, endTime));
                     setIncludeNumsInTitle(extractFourDigitNumbers(newTitle));
-                    setDate(getTimeFromFourDigitNumber(includeNumsInTitle[0], date));
-                    setStartTime(getTimeFromFourDigitNumber(includeNumsInTitle[0], startTime));
-                    setEndTime(validateEndTime(startTime, endTime));
                   }}
                 >
                   {`${getTimeStringFromFourDigitNumber(includeNumsInTitle[0], date)}開始`}
@@ -393,10 +395,10 @@ const AddEvent: React.FC = () => {
                   setTitle(newTitle);
                   setIncludeNumsInTitle(extractFourDigitNumbers(newTitle));
                   setRepeatEndOption('date');
-                  setRepeatEndDate(getDateFromFourDigitNumber(includeNumsInTitle[0]));
+                  setRepeatEndDate(getDateFromFourDigitNumber(includeNumsInTitle[0], date));
                 }}
               >
-                {getDateStringFromFourDigitNumber(includeNumsInTitle[0])}
+                {getDateStringFromFourDigitNumber(includeNumsInTitle[0], date)}
               </button>
             )}
           </div>
