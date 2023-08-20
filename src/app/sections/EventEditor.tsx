@@ -6,13 +6,14 @@ import { useState } from 'react';
 const daysInJapanese = ['日', '月', '火', '水', '木', '金', '土'];
 
 const AddEvent: React.FC = () => {
+  const defaultEndTimeDuration = 60 * 60 * 1000;
   const [title, setTitle] = useState('');
   const [includeNumsInTitle, setIncludeNumsInTitle] = useState<number[] | null>(null);
   const [includeRepeatInTitle, setincludeRepeatInTitle] = useState<string[] | null>(null);
   const [date, setDate] = useState(new Date());
   const [description, setDescription] = useState('');
   const [startTime, setStartTime] = useState<Date>(date);
-  const [endTime, setEndTime] = useState<Date>(new Date(date.getTime() + 60 * 60 * 1000));
+  const [endTime, setEndTime] = useState<Date>(new Date(date.getTime() + defaultEndTimeDuration));
   const [eventMode, setEventMode] = useState('timed');
   const [repeatType, setRepeatType] = useState('none'); // 'none', 'daily', 'weekly', 'monthly'
   const [repeatOn, setRepeatOn] = useState<{ [key: string]: boolean }>({
@@ -136,6 +137,11 @@ const AddEvent: React.FC = () => {
     return hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59;
   };
 
+  const validateEndTime = (start: Date, end: Date): Date => {
+    if (end.getTime() > start.getTime()) return end;
+    else return new Date(date.getTime() + defaultEndTimeDuration);
+  };
+
   return (
     <div className="container mx-auto p-4 h-full">
       <div className="rounded-md max-w-xl mx-auto mt-10 p-4 bg-white shadow-md rounded">
@@ -193,6 +199,7 @@ const AddEvent: React.FC = () => {
                     setIncludeNumsInTitle(extractFourDigitNumbers(newTitle));
                     setDate(getDateFromFourDigitNumber(includeNumsInTitle[0]));
                     setStartTime(getDateFromFourDigitNumber(includeNumsInTitle[0]));
+                    setEndTime(validateEndTime(startTime, endTime));
                   }}
                 >
                   {`${getDateStringFromFourDigitNumber(includeNumsInTitle[0])}開始`}
@@ -243,6 +250,7 @@ const AddEvent: React.FC = () => {
                     setIncludeNumsInTitle(extractFourDigitNumbers(newTitle));
                     setDate(getTimeFromFourDigitNumber(includeNumsInTitle[0], date));
                     setStartTime(getTimeFromFourDigitNumber(includeNumsInTitle[0], startTime));
+                    setEndTime(validateEndTime(startTime, endTime));
                   }}
                 >
                   {`${getTimeStringFromFourDigitNumber(includeNumsInTitle[0], date)}開始`}
