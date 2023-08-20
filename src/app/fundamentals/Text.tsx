@@ -1,7 +1,7 @@
 export default function Text(props: {
   type?: 'heading' | 'body' | 'small';
   colorName?: 'leaf' | 'orange' | 'gray';
-  colorNum?: 7 | 6 | 5;
+  colorNum?: '7' | '6' | '5';
   content: string;
   className?: string;
 }) {
