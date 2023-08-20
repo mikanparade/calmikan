@@ -1,11 +1,11 @@
 export default function Text(props: {
   type?: 'heading' | 'body' | 'small';
   colorName?: 'leaf' | 'orange' | 'gray';
-  colorNum?: 7 | 6 | 5;
+  colorNum?: '7' | '6' | '5';
   content: string;
   className?: string;
 }) {
-  const { type = 'body', colorName = 'gray', colorNum = 6, className = '' } = props;
+  const { type = 'body', colorName = 'gray', colorNum = '6', className = '' } = props;
   let TypeClass = '';
   switch (props.type) {
     case 'heading':
