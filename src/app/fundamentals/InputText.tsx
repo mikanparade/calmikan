@@ -18,7 +18,7 @@ export default function InputText(props: {
 
   return (
     <label className={className}>
-      <input type="text" onChange={handleChange} value={value} />
+      <input type='text' onChange={handleChange} value={value} />
     </label>
   );
 }

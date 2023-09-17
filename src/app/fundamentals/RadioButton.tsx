@@ -20,7 +20,7 @@ export default function RadioButton(props: {
   return (
     <label>
       <input
-        type="radio"
+        type='radio'
         onChange={handleClick}
         name={props.name}
         value={props.value}
