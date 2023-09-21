@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@tanstack/react-query':
+    specifier: ^4.33.0
+    version: 4.33.0(react-dom@18.2.0)(react@18.2.0)
   '@types/node':
     specifier: 20.4.10
     version: 20.4.10
@@ -49,6 +52,9 @@ dependencies:
     version: 5.1.6
 
 devDependencies:
+  '@types/gapi.client.calendar-v3':
+    specifier: ^0.0.1
+    version: 0.0.1
   eslint-config-prettier:
     specifier: ^9.0.0
     version: 9.0.0(eslint@8.47.0)
@@ -61,6 +67,9 @@ devDependencies:
   prettier:
     specifier: ^3.0.1
     version: 3.0.1
+  rrule:
+    specifier: ^2.7.2
+    version: 2.7.2
 
 packages:
 
@@ -159,6 +168,20 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: false
+
+  /@maxim_mazurok/gapi.client.calendar-v3@0.0.20230804:
+    resolution: {integrity: sha512-qhh49Q9h7yPxd/3aErkYV5l8ualqGbSfK3iu0zO6c8m8WVyCorkjtvg6f0VRwOs7dL0SgCG0ILMD4GbSKeJzpw==}
+    dependencies:
+      '@types/gapi.client': 1.0.5
+      '@types/gapi.client.discovery-v1': 0.0.1
+    dev: true
+
+  /@maxim_mazurok/gapi.client.discovery-v1@0.0.20200806:
+    resolution: {integrity: sha512-0pZtrElj8bc0YROIo7nH8VVvks/iww/L68l7r74oC9+ksSVO3Lum1zUR8dXTvJ7TqLGaNYiiNaUZianK6doh/w==}
+    dependencies:
+      '@types/gapi.client': 1.0.5
+      '@types/gapi.client.discovery': 1.0.9
+    dev: true
 
   /@next/env@13.4.13:
     resolution: {integrity: sha512-fwz2QgVg08v7ZL7KmbQBLF2PubR/6zQdKBgmHEl3BCyWTEDsAQEijjw2gbFhI1tcKfLdOOJUXntz5vZ4S0Polg==}
@@ -278,6 +301,51 @@ packages:
     dependencies:
       tslib: 2.6.1
     dev: false
+
+  /@tanstack/query-core@4.33.0:
+    resolution: {integrity: sha512-qYu73ptvnzRh6se2nyBIDHGBQvPY1XXl3yR769B7B6mIDD7s+EZhdlWHQ67JI6UOTFRaI7wupnTnwJ3gE0Mr/g==}
+    dev: false
+
+  /@tanstack/react-query@4.33.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-97nGbmDK0/m0B86BdiXzx3EW9RcDYKpnyL2+WwyuLHEgpfThYAnXFaMMmnTDuAO4bQJXEhflumIEUfKmP7ESGA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@tanstack/query-core': 4.33.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /@types/gapi.client.calendar-v3@0.0.1:
+    resolution: {integrity: sha512-8YA3r3dz/sFZ4noO2kmtH7IHh+0oPfoZySp+RrELw5OnSNYDAuKQJl3t4pFds3zOiBYCGVHI03z80FMRY6Uq/Q==}
+    dependencies:
+      '@maxim_mazurok/gapi.client.calendar-v3': 0.0.20230804
+    dev: true
+
+  /@types/gapi.client.discovery-v1@0.0.1:
+    resolution: {integrity: sha512-xHW6FW+ERNxqFYNhC6yo1yZjBMmigqQIkX11VY8S6NFteZAX8eWpzvSrmmwFEUm4OOLTJhz8dxEyUAs4ltIMnw==}
+    dependencies:
+      '@maxim_mazurok/gapi.client.discovery-v1': 0.0.20200806
+    dev: true
+
+  /@types/gapi.client.discovery@1.0.9:
+    resolution: {integrity: sha512-51fXpt7DM7+zPG5pgwnNr3KaRXmyszznu66VPpV7+FAu0LGtpTohvdfvkRCnCn2Z6EgNTq/baFAtCa/9ylHOug==}
+    deprecated: use @types/gapi.client.discovery-v1 instead; see https://github.com/Maxim-Mazurok/google-api-typings-generator/issues/652 for details
+    dependencies:
+      '@maxim_mazurok/gapi.client.discovery-v1': 0.0.20200806
+    dev: true
+
+  /@types/gapi.client@1.0.5:
+    resolution: {integrity: sha512-OTpbBMuzfC4lkvaomxqskI/iWRGW3zOZbDXZLNSyiuswTiSSGgILRLkg0POuZ4EgzEdaYaTlXpnXiCp07ri/Yw==}
+    dev: true
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
@@ -2266,6 +2334,12 @@ packages:
     dependencies:
       glob: 7.2.3
 
+  /rrule@2.7.2:
+    resolution: {integrity: sha512-NkBsEEB6FIZOZ3T8frvEBOB243dm46SPufpDckY/Ap/YH24V1zLeMmDY8OA10lk452NdrF621+ynDThE7FQU2A==}
+    dependencies:
+      tslib: 2.6.1
+    dev: true
+
   /run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
     dependencies:
@@ -2677,6 +2751,14 @@ packages:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
       punycode: 2.3.0
+
+  /use-sync-external-store@1.2.0(react@18.2.0):
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
