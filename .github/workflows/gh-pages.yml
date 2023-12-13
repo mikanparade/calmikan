@@ -15,9 +15,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Replace entire content of next.config.js using forGitHubActions.next.config.js
+      - name: Replace entire content of next.config.js using for-github-workflows.next.config.js
         run: |
-          cat forGitHubActions.next.config.js > next.config.js
+          cat for-github-workflows.next.config.js > next.config.js
 
       - name: Set repository name
         id: extract_repo
