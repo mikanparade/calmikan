@@ -2,7 +2,7 @@ FROM node:21-alpine3.18
 
 WORKDIR /app
 
-RUN npm install -g pnpm
+RUN npm install -g pnpm@latest
 
 COPY pnpm-lock.yaml package.json ./
 
