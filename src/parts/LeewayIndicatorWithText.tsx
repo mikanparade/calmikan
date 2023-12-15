@@ -1,6 +1,6 @@
 import { TLeeway } from '../types/TLeeway';
 
-import LeewayIndicator from '../components/LeewayIndicator';
+import LeewayIndicator from './LeewayIndicator';
 
 const LeewayIndicatorWithText: React.FC<{ level?: TLeeway }> = ({ level }) => {
   switch (level) {
