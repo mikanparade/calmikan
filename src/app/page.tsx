@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import EventEditor from './sections/EventEditor';
+import EventEditor from '../sections/EventEditor';
 
 export default function Home() {
   return (
