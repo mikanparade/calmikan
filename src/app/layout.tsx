@@ -1,7 +1,7 @@
-import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import localFont from 'next/font/local';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,12 +22,12 @@ const interFont = localFont({
   variable: '--font-inter',
   src: [
     {
-      path: '../../node_modules/inter-ui/Inter (web)/Inter-Bold.woff2',
+      path: '../../node_modules/inter-ui/web/Inter-Bold.woff2',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '../../node_modules/inter-ui/Inter (web)/Inter-Regular.woff2',
+      path: '../../node_modules/inter-ui/web/Inter-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
@@ -36,7 +36,7 @@ const interFont = localFont({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
+    <html lang='ja'>
       <body className={`${interFont.variable} ${iconFont.variable}`}>{children}</body>
     </html>
   );

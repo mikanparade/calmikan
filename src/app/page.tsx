@@ -1,12 +1,8 @@
-import Calendar from './sections/Calendar';
-import Topbar from './sections/Topbar';
+import { redirect } from 'next/navigation';
+import { FC } from 'react';
 
-export default function Home() {
-  return (
-    <main>
-      <Topbar />
-      <Calendar dateSelected={new Date()} />
-      {/* <EventEditor></EventEditor> */}
-    </main>
-  );
+const Page: FC = () => {
+  redirect('/events');
 }
+
+export default Page;
