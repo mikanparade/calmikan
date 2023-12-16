@@ -93,9 +93,9 @@ export const RRuleEditor: FC<RRuleEditorProps> = (props) => {
   }[freq.value];
 
   return (
-    <dl>
+    <dl className='flex flex-col'>
       <dt>繰り返しの種類</dt>
-      <dd>
+      <dd className='mb-4 ml-4 flex flex-row gap-1'>
         {freq.props.map((props) => (
           <Radio key={props.value} checked={props.checked} onChange={props.onChange}>
             {props.label}
@@ -105,16 +105,16 @@ export const RRuleEditor: FC<RRuleEditorProps> = (props) => {
       {freq.value !== 9 && (
         <>
           <dt>繰り返しの頻度</dt>
-          <dd>
-            <input type='number' {...interval} />
-            {intervalLabel}に1回
+          <dd className='mb-4 ml-4 flex flex-row'>
+            <input step={1} min={1} type='number' className='w-full' {...interval} />
+            <span className='flex-shrink-0'>{intervalLabel}に1回</span>
           </dd>
         </>
       )}
       {[Frequency.YEARLY, Frequency.MONTHLY, Frequency.WEEKLY].includes(freq.value) && (
         <>
           <dt>繰り返す曜日</dt>
-          <dd>
+          <dd className='mb-4 ml-4 flex flex-row gap-1'>
             {byweekday.props.map((props) => (
               <Checkbox key={props.value} checked={props.checked} onChange={props.onChange}>
                 {props.label}
@@ -126,7 +126,7 @@ export const RRuleEditor: FC<RRuleEditorProps> = (props) => {
       {freq.value === Frequency.YEARLY && (
         <>
           <dt>繰り返す月</dt>
-          <dd>
+          <dd className='mb-4 ml-4 grid grid-cols-6 gap-1'>
             {bymonth.props.map((props) => (
               <Checkbox key={props.value} checked={props.checked} onChange={props.onChange}>
                 {props.label}
@@ -138,7 +138,7 @@ export const RRuleEditor: FC<RRuleEditorProps> = (props) => {
       {[Frequency.YEARLY, Frequency.MONTHLY, Frequency.WEEKLY].includes(freq.value) && (
         <>
           <dt>繰り返す日の限定</dt>
-          <dd>
+          <dd className='mb-4 ml-4'>
             {bysetposLabel}
             <input
               type='text'
@@ -152,7 +152,7 @@ export const RRuleEditor: FC<RRuleEditorProps> = (props) => {
       {freq.value === Frequency.MONTHLY && (
         <>
           <dt>繰り返す日</dt>
-          <dd>
+          <dd className='mb-4 ml-4'>
             毎月
             <input type='text' {...bymonthdayString} placeholder='カンマ区切りで入力' />日
           </dd>
@@ -161,7 +161,7 @@ export const RRuleEditor: FC<RRuleEditorProps> = (props) => {
       {freq.value === Frequency.YEARLY && (
         <>
           <dt>繰り返す日</dt>
-          <dd>
+          <dd className='mb-4 ml-4'>
             毎年
             <input type='text' {...byyeardayString} placeholder='カンマ区切りで入力' />日
           </dd>
@@ -170,7 +170,7 @@ export const RRuleEditor: FC<RRuleEditorProps> = (props) => {
       {freq.value === Frequency.YEARLY && (
         <>
           <dt>繰り返す週</dt>
-          <dd>
+          <dd className='mb-4 ml-4'>
             毎年第
             <input type='text' {...byweeknoString} placeholder='カンマ区切りで入力' />週
           </dd>
@@ -179,7 +179,7 @@ export const RRuleEditor: FC<RRuleEditorProps> = (props) => {
       {freq.value !== 9 && (
         <>
           <dt>繰り返しの終了</dt>
-          <dd>
+          <dd className='mb-4 ml-4 flex flex-row gap-1'>
             {recurrenceEnd.props.map((props) => (
               <Radio key={props.value} checked={props.checked} onChange={props.onChange}>
                 {props.label}
@@ -189,7 +189,7 @@ export const RRuleEditor: FC<RRuleEditorProps> = (props) => {
           {recurrenceEnd.value === 'until' && (
             <>
               <dt>繰り返しの終了日</dt>
-              <dd>
+              <dd className='mb-4 ml-4'>
                 <input type='datetime-local' {...until} />
               </dd>
             </>
@@ -197,8 +197,8 @@ export const RRuleEditor: FC<RRuleEditorProps> = (props) => {
           {recurrenceEnd.value === 'count' && (
             <>
               <dt>繰り返す回数</dt>
-              <dd>
-                <input type='number' {...countString} />
+              <dd className='mb-4 ml-4'>
+                <input type='number' {...countString} />回
               </dd>
             </>
           )}

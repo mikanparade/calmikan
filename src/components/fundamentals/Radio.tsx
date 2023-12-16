@@ -7,7 +7,7 @@ interface RadioProps {
 }
 
 export const Radio: FC<RadioProps> = (props) => (
-  <label>
+  <label className='w-full flex flex-row gap-2 py-1 px-2'>
     <input type='radio' checked={props.checked} onChange={props.onChange} />
     {props.children}
   </label>

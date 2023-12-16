@@ -7,7 +7,7 @@ interface CheckboxProps {
 }
 
 export const Checkbox: FC<CheckboxProps> = (props) => (
-  <label>
+  <label className='w-full flex flex-row gap-2 py-1 px-2'>
     <input type='checkbox' checked={props.checked} onChange={props.onChange} />
     {props.children}
   </label>
