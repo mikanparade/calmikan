@@ -1,10 +1,12 @@
-import Image from 'next/image';
-import EventEditor from '../sections/EventEditor';
+import Calendar from './sections/Calendar';
+import Topbar from './sections/Topbar';
 
 export default function Home() {
   return (
     <main>
-      <EventEditor></EventEditor>
+      <Topbar />
+      <Calendar dateSelected={new Date()} />
+      {/* <EventEditor></EventEditor> */}
     </main>
   );
 }

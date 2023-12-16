@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv05', 'cv06', 'cv08', 'zero';
+    font-feature-settings: 'ss01', 'ss02', 'ss03', 'zero', 'tnum';
   }
 }
 
