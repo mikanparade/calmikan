@@ -22,7 +22,7 @@ const interFont = localFont({
   variable: '--font-inter',
   src: [
     {
-      path: '../../node_modules/inter-ui/Inter (web)/Inter-Bold.woff2',
+      path: '../../node_modules/inter-ui/web/Inter-Bold.woff2',
       weight: '700',
       style: 'normal',
     },
