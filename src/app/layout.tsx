@@ -27,7 +27,7 @@ const interFont = localFont({
       style: 'normal',
     },
     {
-      path: '../../node_modules/inter-ui/Inter (web)/Inter-Regular.woff2',
+      path: '../../node_modules/inter-ui/web/Inter-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
